@@ -1,0 +1,13 @@
+{
+  "name": "whatsapp-agent-plugins",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Packages WhatsApp Agent by Calypso for the ChatGPT plugin directory. The listing, skills and review cases live here; Elephant's packaging tool builds and validates them.",
+  "license": "MIT",
+  "author": "Calypso",
+  "scripts": {
+    "build": "npm --prefix \"${ELEPHANT_PLUGINS:-../../elephant/plugins}\" run build -- --root \"$PWD\" --profile whatsapp-agent",
+    "validate": "npm --prefix \"${ELEPHANT_PLUGINS:-../../elephant/plugins}\" run validate -- --root \"$PWD\" --profile whatsapp-agent",
+    "validate:online": "npm --prefix \"${ELEPHANT_PLUGINS:-../../elephant/plugins}\" run validate -- --online --root \"$PWD\" --profile whatsapp-agent"
+  }
+}

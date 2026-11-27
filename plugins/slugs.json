@@ -1,0 +1,24 @@
+{
+  "website": "https://www.calypso.so/whatsapp",
+  "entries": [
+    {
+      "package": "whatsapp-agent",
+      "displayName": "WhatsApp Agent by Calypso",
+      "listingTitle": "WhatsApp Agent: Team Inbox",
+      "serverName": "whatsapp-agent",
+      "endpoint": "https://whatsapp-mcp.calypso.so/whatsapp/mcp",
+      "scope": "whatsapp:read",
+      "tools": [
+        "whatsapp-overview",
+        "whatsapp-list-boards",
+        "whatsapp-list-chats",
+        "whatsapp-find-chat",
+        "whatsapp-open-chat",
+        "whatsapp-read-messages",
+        "whatsapp-list-follow-ups",
+        "whatsapp-agent-activity",
+        "whatsapp-list-conversations"
+      ]
+    }
+  ]
+}

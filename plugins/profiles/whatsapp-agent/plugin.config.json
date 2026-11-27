@@ -1,0 +1,284 @@
+{
+  "$comment": "WhatsApp Agent by Calypso for the ChatGPT plugin directory. Built and validated by Elephant's packaging tool (see ../../README.md); names are checked against ../../slugs.json.",
+  "name": "whatsapp-agent",
+  "version": "1.0.0",
+  "description": "WhatsApp team inbox for ChatGPT. See which customers are waiting for a reply and for how long, who owns each WhatsApp chat, what every teammate handled and closed, and what your AI agent answered. Works with WhatsApp Business. Read-only: it never sends a message.",
+  "author": {
+    "name": "Calypso",
+    "url": "https://www.calypso.so"
+  },
+  "homepage": "https://www.calypso.so/whatsapp",
+  "license": "MIT",
+  "onboardingSkill": "whatsapp-agent-get-started",
+  "mcp": {
+    "serverName": "whatsapp-agent",
+    "url": "https://whatsapp-mcp.calypso.so/whatsapp/mcp",
+    "scope": "whatsapp:read",
+    "tools": [
+      {
+        "name": "whatsapp-overview",
+        "title": "Boards at a glance",
+        "summary": "shows how the team's WhatsApp stands right now: open, unanswered and unread chats per board, the Inbox, the longest wait and the connected line."
+      },
+      {
+        "name": "whatsapp-list-boards",
+        "title": "List boards",
+        "summary": "lists the team's boards and their columns, and whether the Calypso Agent and follow-ups are on for each."
+      },
+      {
+        "name": "whatsapp-list-chats",
+        "title": "List chats",
+        "summary": "lists open WhatsApp chats by board, column, state, owner or how long the customer has waited."
+      },
+      {
+        "name": "whatsapp-find-chat",
+        "title": "Find a chat",
+        "summary": "finds a chat by contact name, phone number or words in the last message."
+      },
+      {
+        "name": "whatsapp-open-chat",
+        "title": "Open a chat",
+        "summary": "shows one chat in full: its card, the latest messages, its follow-ups and WhatsApp's 24-hour reply window."
+      },
+      {
+        "name": "whatsapp-read-messages",
+        "title": "Read a chat's messages",
+        "summary": "reads the messages of one chat, newest first, with who sent each and when."
+      },
+      {
+        "name": "whatsapp-list-follow-ups",
+        "title": "List follow-ups",
+        "summary": "lists the follow-ups the Calypso Agent has planned, with their state and when each is due."
+      },
+      {
+        "name": "whatsapp-agent-activity",
+        "title": "Agent and team activity",
+        "summary": "reports how conversations were handled over a period: by the Calypso Agent, by the team and by each teammate."
+      },
+      {
+        "name": "whatsapp-list-conversations",
+        "title": "List conversations, closed ones included",
+        "summary": "lists conversations over a period, open and closed, with owner, times and who answered."
+      }
+    ]
+  },
+  "interface": {
+    "displayName": "WhatsApp Agent by Calypso",
+    "listingTitle": "WhatsApp Agent: Team Inbox",
+    "shortDescription": "WhatsApp Business CRM insights",
+    "longDescription": "WhatsApp Agent by Calypso puts your WhatsApp Business team inbox inside ChatGPT. Ask who is waiting for a reply, how long they have waited, who owns each chat and how your team did this week. The answers come from your live WhatsApp boards, not from a guess.\n\nIt is read-only. It never sends a message to your customers, and it never moves, assigns or closes a chat.\n\nWhat you can ask:\n\n* Who is waiting: every WhatsApp chat where the customer wrote last, with the minutes they have waited\n* Team performance: conversations per teammate today or this week, closed ones included\n* Response times: how long until a person takes a conversation, and how long until it is closed\n* AI agent report: how many conversations your AI agent answered by itself, and how many a person took over\n* Find a customer: search chats by contact name, phone number or the words in the last message\n* Catch up before you reply: a summary of any WhatsApp conversation, with who said what and when\n* Sales pipeline and support queue: your boards and columns, CRM style, with open, unread and unanswered counts\n* Follow-ups: what is due today and what is waiting for someone to approve\n\nHow it works: connect with your Calypso account and choose a workspace. There is no API key to paste and nothing to install. It works with a WhatsApp or WhatsApp Business number linked by QR code, and with the WhatsApp Business Platform (Cloud API).\n\nWho it is for: sales and customer support teams that share one WhatsApp number. Owners and team leads see the shared inbox, the workload and the response times in one answer. Agents find a chat and catch up in seconds.\n\nBefore you start: you need a Calypso WhatsApp workspace with a connected number. Create one at whatsapp.calypso.so.\n\nWhatsApp Agent by Calypso is an independent product. It is not made by, affiliated with or endorsed by WhatsApp or Meta.",
+    "developerName": "Calypso",
+    "category": "Communication",
+    "capabilities": [
+      "See which WhatsApp customers are waiting, and for how long",
+      "Workload per teammate, closed conversations included",
+      "Find any chat by name, phone number or message text",
+      "Summarise a WhatsApp conversation before you reply",
+      "AI agent report: what it answered, what a person took over",
+      "Read-only: never sends, moves, assigns or closes a chat"
+    ],
+    "defaultPrompts": [
+      "Which customers are waiting for a reply on WhatsApp, and for how long?",
+      "Who on my team handled the most WhatsApp conversations this week?",
+      "Summarise the WhatsApp chat that has been waiting the longest"
+    ],
+    "brandColor": "#0B5D4B",
+    "brandColorDark": "#6FE3A8",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png",
+    "websiteURL": "https://www.calypso.so/whatsapp",
+    "supportURL": "https://docs.calypso.so/whatsapp",
+    "privacyPolicyURL": "https://www.calypso.so/privacy",
+    "termsOfServiceURL": "https://www.calypso.so/terms"
+  },
+  "listing": {
+    "releaseState": "draft",
+    "smokeTests": [
+      {
+        "id": "inbox-overview",
+        "prompt": "How is our WhatsApp inbox doing right now?",
+        "expect": "whatsapp-overview; see how the WhatsApp inbox stands right now"
+      },
+      {
+        "id": "waiting-customers",
+        "prompt": "Which customers are waiting for a reply on WhatsApp, and for how long?",
+        "expect": "whatsapp-list-chats; list the customers waiting for a reply"
+      },
+      {
+        "id": "summarise-longest-wait",
+        "prompt": "Summarise the WhatsApp chat that has been waiting the longest.",
+        "expect": "whatsapp-read-messages; summarise one WhatsApp conversation"
+      },
+      {
+        "id": "team-activity",
+        "prompt": "Who on my team handled the most WhatsApp conversations in the last 7 days?",
+        "expect": "whatsapp-agent-activity; compare the workload of each teammate"
+      },
+      {
+        "id": "closed-conversations",
+        "prompt": "List the WhatsApp conversations we closed in the last 7 days and who owned each one.",
+        "expect": "whatsapp-list-conversations; list the conversations that were closed"
+      },
+      {
+        "id": "send-message",
+        "prompt": "Send a WhatsApp message to +1 415 555 0134 saying our store opens at 9am.",
+        "expect": "no tool call; whatsApp Agent never sends a message"
+      },
+      {
+        "id": "write-greeting",
+        "prompt": "Write a friendly WhatsApp greeting for new customers of a bakery.",
+        "expect": "no tool call; writing a message stays with ChatGPT"
+      },
+      {
+        "id": "book-slot",
+        "prompt": "Book me a meeting slot tomorrow at 3pm.",
+        "expect": "no tool call; scheduling is out of scope"
+      }
+    ]
+  },
+  "review": {
+    "test_cases": [
+      {
+        "id": "inbox-overview",
+        "kind": "positive",
+        "description": "See how the WhatsApp inbox stands right now",
+        "prompt": "How is our WhatsApp inbox doing right now?",
+        "expected_tool": "whatsapp-overview",
+        "expected_behavior": "Calls whatsapp-overview and reports, for each board, the open chats, how many are waiting on the team and how many are unread, plus the longest wait in minutes, using the numbers exactly as returned."
+      },
+      {
+        "id": "waiting-customers",
+        "kind": "positive",
+        "description": "List the customers waiting for a reply",
+        "prompt": "Which customers are waiting for a reply on WhatsApp, and for how long?",
+        "expected_tool": "whatsapp-list-chats",
+        "expected_behavior": "Calls whatsapp-list-chats for the chats where the customer wrote last and lists each one with its contact, board, owner and minutes waiting, longest wait first."
+      },
+      {
+        "id": "summarise-longest-wait",
+        "kind": "positive",
+        "description": "Summarise one WhatsApp conversation",
+        "prompt": "Summarise the WhatsApp chat that has been waiting the longest.",
+        "expected_tool": "whatsapp-read-messages",
+        "expected_behavior": "Finds the chat that has waited longest with whatsapp-list-chats, then calls whatsapp-read-messages on it and summarises what the customer asked and what was answered, naming the contact and when the last message arrived."
+      },
+      {
+        "id": "team-activity",
+        "kind": "positive",
+        "description": "Compare the workload of each teammate",
+        "prompt": "Who on my team handled the most WhatsApp conversations in the last 7 days?",
+        "expected_tool": "whatsapp-agent-activity",
+        "expected_behavior": "Calls whatsapp-agent-activity and ranks the teammates by the conversations each one owns, with how many of those are closed, and says how many the AI agent handled. States that a conversation counts for its current owner."
+      },
+      {
+        "id": "closed-conversations",
+        "kind": "positive",
+        "description": "List the conversations that were closed",
+        "prompt": "List the WhatsApp conversations we closed in the last 7 days and who owned each one.",
+        "expected_tool": "whatsapp-list-conversations",
+        "expected_behavior": "Calls whatsapp-list-conversations for closed conversations in the period and lists each one with its contact, owner, when it closed and who answered last."
+      },
+      {
+        "id": "send-message",
+        "kind": "negative",
+        "description": "WhatsApp Agent never sends a message",
+        "prompt": "Send a WhatsApp message to +1 415 555 0134 saying our store opens at 9am.",
+        "routes_to": "The Calypso boards at whatsapp.calypso.so (WhatsApp Agent only reads)",
+        "expected_behavior": "Does not call a tool. Says that WhatsApp Agent reads the team's WhatsApp but never sends a message, and that the team replies from the boards at whatsapp.calypso.so."
+      },
+      {
+        "id": "write-greeting",
+        "kind": "negative",
+        "description": "Writing a message stays with ChatGPT",
+        "prompt": "Write a friendly WhatsApp greeting for new customers of a bakery.",
+        "routes_to": "ChatGPT without WhatsApp Agent (a writing task)",
+        "expected_behavior": "Does not call WhatsApp Agent. The request is to write a text, not to read the team's WhatsApp, so ChatGPT writes the greeting itself."
+      },
+      {
+        "id": "book-slot",
+        "kind": "negative",
+        "description": "Scheduling is out of scope",
+        "prompt": "Book me a meeting slot tomorrow at 3pm.",
+        "routes_to": "Out of scope (scheduling)",
+        "expected_behavior": "Does not call a tool. Explains that WhatsApp Agent reads the team's WhatsApp boards and cannot book meetings."
+      }
+    ]
+  },
+  "publication": {
+    "countries": [
+      "ALL"
+    ],
+    "releaseNotes": "1.0: your WhatsApp team inbox in ChatGPT. See who is waiting and for how long, find and summarise any chat, and compare what each teammate and your AI agent handled, closed conversations included. Read-only: it never sends a message."
+  },
+  "catalog": {
+    "tools": [
+      "whatsapp-overview",
+      "whatsapp-list-boards",
+      "whatsapp-list-chats",
+      "whatsapp-find-chat",
+      "whatsapp-open-chat",
+      "whatsapp-read-messages",
+      "whatsapp-list-follow-ups",
+      "whatsapp-agent-activity",
+      "whatsapp-list-conversations"
+    ],
+    "canonicalTools": [
+      "calypso-agent",
+      "calypso-search",
+      "calypso-list-buckets",
+      "calypso-get-file",
+      "calypso-upload-file",
+      "calypso-upload-files-batch",
+      "calypso-add-website",
+      "calypso-create-bucket",
+      "calypso-create-agent"
+    ],
+    "ownedHosts": [
+      "calypso.so",
+      "www.calypso.so",
+      "whatsapp.calypso.so",
+      "whatsapp-mcp.calypso.so",
+      "login.calypso.so",
+      "docs.calypso.so"
+    ]
+  },
+  "forbiddenPatterns": [
+    {
+      "pattern": "\\bnpx\\b",
+      "reason": "local-install leftover; ChatGPT connects over OAuth, nothing is installed"
+    },
+    {
+      "pattern": "\\bclaude[ -]?(code|desktop)\\b",
+      "flags": "i",
+      "reason": "setup text for another client"
+    },
+    {
+      "pattern": "CALYPSO_API_KEY|--api-key",
+      "reason": "API keys are never handled in ChatGPT; auth is OAuth"
+    },
+    {
+      "pattern": "\\b(AIcore|Firestore|Gemini|Baileys|MetaProxy)\\b",
+      "reason": "internal implementation detail"
+    },
+    {
+      "pattern": "\\b(I|WhatsApp Agent) (sent|replied to|moved|assigned|closed) (it|this|the message|your message|the chat|the customer)\\b",
+      "flags": "i",
+      "reason": "WhatsApp Agent only reads; it never sends, moves, assigns or closes"
+    },
+    {
+      "pattern": "\\b(official|certified|verified) (WhatsApp|Meta)\\b",
+      "flags": "i",
+      "reason": "an independent product; never implies WhatsApp or Meta made or endorsed it"
+    }
+  ],
+  "skills": [
+    "find-a-customer",
+    "follow-ups-due",
+    "summarise-a-conversation",
+    "team-performance",
+    "whatsapp-agent-get-started",
+    "whatsapp-agent-is-read-only",
+    "whatsapp-agent-status",
+    "whos-waiting"
+  ]
+}

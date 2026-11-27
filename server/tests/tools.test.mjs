@@ -91,6 +91,8 @@ test("it tells every caller that it never messages customers", async () => {
   const client = await connect(["whatsapp:read"]);
   const instructions = client.getInstructions();
   assert.match(instructions, /never messages your customers/);
+  // The directory's review asks that a request to send or change calls nothing.
+  assert.match(instructions, /do not call any tool, not even to find the chat/);
   assert.match(instructions, /it only reads/);
   assert.doesNotMatch(instructions, /Elephant/);
   await client.close();

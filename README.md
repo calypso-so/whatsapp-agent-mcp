@@ -126,6 +126,12 @@ check `/healthz`, manual deploys.
 | `WHATSAPP_REQUESTS_PER_MINUTE` | `120` | Per-caller request budget |
 | `PORT` | `8080` | Listen port |
 
+## ChatGPT plugin
+
+[`plugins/`](plugins/) holds the ChatGPT plugin directory listing: its name and descriptions, the skills
+ChatGPT reads, the review cases and the owl. [`plugins/README.md`](plugins/README.md) says how the
+package is built and why the listing reads the way it does.
+
 ## License
 
 [MIT](LICENSE).
