@@ -14,7 +14,7 @@ const inputSchema = {
     .enum(["waiting", "unanswered", "unread", "taken", "agent"])
     .optional()
     .describe(
-      "`unanswered`: the customer is waiting on the team (the customer wrote and nobody on the team has opened or answered it since, or nobody has answered the conversation at all), longest wait first. `waiting`: no teammate has taken it. `taken`: a teammate has. `unread`: has unread messages. `agent`: the Calypso Agent is answering it.",
+      "`unanswered`: the customer is waiting on the team (the customer spoke last, so their message is the newest one in the chat), longest wait first. `waiting`: no teammate has taken it. `taken`: a teammate has. `unread`: has unread messages. `agent`: the Calypso Agent is answering it.",
     ),
   owner: z
     .string()
@@ -51,7 +51,7 @@ export class ListChatsTool extends WhatsAppTool<typeof inputSchema> {
   readonly name = "whatsapp-list-chats";
   readonly title = "List chats";
   readonly description =
-    "Open WhatsApp chats as the boards show them, filtered the way the question asks: by board or the Inbox, column, state, owner, recency, or how long the customer has waited. Each chat comes with its contact, phone, board and column, owner (a teammate, the Calypso Agent, or nobody), minutes waiting (only while the customer is waiting on the team), unread count and a short preview of the last message. `total` counts every match; pages are 25 chats at most. Closed chats are not listed.";
+    "Open WhatsApp chats as the boards show them, filtered the way the question asks: by board or the Inbox, column, state, owner, recency, or how long the customer has waited. Each chat comes with its contact, phone, board and column, owner (a teammate, the Calypso Agent, or nobody), minutes waiting (only while the customer spoke last, counted from their last message), unread count and a short preview of the last message. `total` counts every match; pages are 25 chats at most. Closed chats are not listed.";
   readonly inputSchema = inputSchema;
   protected readonly failure = "Could not list the chats.";
 

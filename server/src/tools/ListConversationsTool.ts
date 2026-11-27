@@ -27,7 +27,7 @@ const inputSchema = {
     .enum(["agent", "team", "nobody"])
     .optional()
     .describe(
-      "Who answered: `agent` (the Calypso Agent alone), `team` (a person), or `nobody`.",
+      "Who answered last: `agent` (the Calypso Agent), `team` (a person), or `nobody`.",
     ),
   limit: z
     .number()
@@ -47,7 +47,7 @@ export class ListConversationsTool extends WhatsAppTool<typeof inputSchema> {
   readonly name = "whatsapp-list-conversations";
   readonly title = "List conversations, closed ones included";
   readonly description =
-    "Conversations over a period, newest first, open and closed alike: the last seven days unless `since` says otherwise. Use it for what whatsapp-list-chats cannot show, which is anything already closed: what a teammate closed today, which closed conversations nobody answered, how one went. Each row has the chat id (pass it to whatsapp-open-chat or whatsapp-read-messages, closed or not), the contact, its owner, when it started, was first taken by a person and closed, who answered, the replies each side sent, whether a person took over from the agent, and the customer's rating. `owner` is the teammate who holds it now: a transferred conversation shows its last owner only. `total` counts every match; if `scanned_limit_reached` is true the period held more conversations than were read, so say the list may be incomplete.";
+    "Conversations over a period, newest first, open and closed alike: the last seven days unless `since` says otherwise. A conversation belongs to the period it started in, whenever it closed: for what was closed today, start `since` a few days back, ask for `closed`, and read each row's `closed_at`. Use it for what whatsapp-list-chats cannot show, which is anything already closed: what a teammate closed today, which closed conversations nobody answered, how one went. Each row has the chat id (pass it to whatsapp-open-chat or whatsapp-read-messages, closed or not), the contact, its owner, when it started, was first taken by a person and closed, who answered last, the replies each side sent, whether a person took over from the agent, and the customer's rating. `team_replies` and `handed_over` are null on WhatsApp Business lines, which do not record them: say unknown, not zero. `owner` is the teammate who holds it now: a transferred conversation shows its last owner only. `total` counts every match; if `scanned_limit_reached` is true the period held more conversations than were read, so say the list may be incomplete.";
   readonly inputSchema = inputSchema;
   protected readonly failure = "Could not list the conversations.";
 

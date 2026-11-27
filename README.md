@@ -24,7 +24,7 @@ Needs a [Calypso WhatsApp](https://www.calypso.so/whatsapp) workspace.
 | You ask | It answers from |
 |---|---|
 | "How are my boards this morning?" | each board's open, unanswered, unread and taken chats; the Inbox; the longest wait |
-| "Who has been waiting longest?" | open chats where the customer is waiting on the team, longest wait first |
+| "Who has been waiting longest?" | open chats where the customer spoke last, longest wait first |
 | "What came in overnight?" | chats with activity since the time you name |
 | "What's in the Inbox?" | chats that are on no board yet |
 | "What's on Ana's plate?" | the chats one teammate owns |
