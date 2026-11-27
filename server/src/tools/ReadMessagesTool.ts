@@ -25,7 +25,7 @@ export class ReadMessagesTool extends WhatsAppTool<typeof inputSchema> {
   readonly name = "whatsapp-read-messages";
   readonly title = "Read a chat's messages";
   readonly description =
-    "The messages of one chat, newest first, each with who sent it (`customer`, `agent` for the Calypso Agent, `teammate` for a person on the team), when, and its text. An attachment is named by its kind only; the file itself is not available. Call it only when the question needs what was actually said, such as summarising a conversation or checking what the agent told a customer.";
+    "The messages of one chat, newest first, each with who sent it (`customer`, `agent` for anything Calypso sent by itself, the Calypso Agent's reply or an automatic out-of-hours message, `teammate` for a person on the team), when, and its text. An attachment is named by its kind only; the file itself is not available. Call it only when the question needs what was actually said, such as summarising a conversation or checking what the agent told a customer.";
   readonly inputSchema = inputSchema;
   protected readonly failure = "Could not read the messages.";
 

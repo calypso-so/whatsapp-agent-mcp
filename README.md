@@ -19,14 +19,12 @@ https://whatsapp-mcp.calypso.so/whatsapp/mcp
 
 Needs a [Calypso WhatsApp](https://www.calypso.so/whatsapp) workspace.
 
-> **Status: launching.** The hosted endpoint above is not serving yet. This page will say when it is.
-
 ## What people ask it
 
 | You ask | It answers from |
 |---|---|
 | "How are my boards this morning?" | each board's open, unanswered, unread and taken chats; the Inbox; the longest wait |
-| "Who has been waiting longest?" | open chats where the customer spoke last, longest wait first |
+| "Who has been waiting longest?" | open chats where the customer is waiting on the team, longest wait first |
 | "What came in overnight?" | chats with activity since the time you name |
 | "What's in the Inbox?" | chats that are on no board yet |
 | "What's on Ana's plate?" | the chats one teammate owns |
@@ -61,7 +59,7 @@ One scope, `whatsapp:read`, and eight tools. Every one is marked read-only.
 | `whatsapp-open-chat` | One chat: its card, last messages, open follow-ups and reply window |
 | `whatsapp-read-messages` | A chat's messages, newest first, a page at a time |
 | `whatsapp-list-follow-ups` | Planned follow-ups, by state, due time and board |
-| `whatsapp-agent-activity` | How many conversations the agent, the team, or nobody handled over a period |
+| `whatsapp-agent-activity` | How many of the team's conversations the agent, the team, or nobody handled over a period |
 
 Two prompts ship with it: `whatsapp-morning-brief` and `whatsapp-get-started`.
 

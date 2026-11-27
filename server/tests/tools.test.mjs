@@ -198,6 +198,16 @@ test("what the API answers is passed on as it arrived", async () => {
   await client.close();
 });
 
+test("activity is asked for the whole team, never for one board", async () => {
+  const client = await connect();
+  const { tools } = await client.listTools();
+  const activity = tools.find(
+    (tool) => tool.name === "whatsapp-agent-activity",
+  );
+  assert.deepEqual(Object.keys(activity.inputSchema.properties), ["since"]);
+  await client.close();
+});
+
 test("an empty workspace is told its next step, not handed zeros", async () => {
   const client = await connect();
   const overview = (body) => {

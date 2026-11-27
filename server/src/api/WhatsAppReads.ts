@@ -69,10 +69,8 @@ export class WhatsAppReads {
     return this.get("/whatsapp/follow-ups", filters);
   }
 
-  activity(filters: {
-    readonly since?: string;
-    readonly board?: string;
-  }): Promise<unknown> {
+  /** Team-wide: the API offers no board filter for activity. */
+  activity(filters: { readonly since?: string }): Promise<unknown> {
     return this.get("/whatsapp/activity", filters);
   }
 
