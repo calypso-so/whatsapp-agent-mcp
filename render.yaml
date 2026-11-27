@@ -1,0 +1,25 @@
+# WhatsApp Agent by Calypso — hosted MCP server.
+# Env with sync: false is set in the Render dashboard, never committed.
+services:
+  - type: web
+    name: whatsapp-agent-mcp
+    runtime: node
+    plan: starter
+    rootDir: server
+    buildCommand: npm ci && npm run build
+    startCommand: node dist/index.js
+    healthCheckPath: /healthz
+    autoDeploy: false
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: WHATSAPP_PUBLIC_BASE_URL
+        value: https://whatsapp-mcp.calypso.so
+      - key: CALYPSO_OAUTH_ISSUER
+        value: https://login.calypso.so
+      - key: CALYPSO_API_BASE_URL
+        value: https://api.calypso.so/v1
+      # The same 32-byte key Calypso's authorization server seals grants with.
+      # Unset, sign-in is off and only Calypso project keys are accepted.
+      - key: WHATSAPP_TOKEN_ENC_KEY
+        sync: false

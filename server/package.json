@@ -1,0 +1,48 @@
+{
+  "name": "@calypsohq/whatsapp-agent-mcp-server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "WhatsApp Agent by Calypso: read your team's WhatsApp boards from Claude, ChatGPT and Cursor. Which chats are waiting, who owns each one, what the agent handled, which follow-ups are due.",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "start": "node dist/index.js",
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "smoke": "node scripts/smoke-http.mjs",
+    "lint": "biome check --indent-style=space --indent-width=2 src scripts tests",
+    "format": "biome format --write --indent-style=space --indent-width=2 src scripts tests"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "mcp-server",
+    "whatsapp",
+    "calypso",
+    "crm",
+    "customer-service"
+  ],
+  "author": "Calypso",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calypso-so/whatsapp-agent-mcp.git",
+    "directory": "server"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@calypsohq/elephant-mcp-server": "^1.5.0",
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "dotenv": "^16.3.1",
+    "jose": "^6.2.17",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.16",
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.2"
+  }
+}
