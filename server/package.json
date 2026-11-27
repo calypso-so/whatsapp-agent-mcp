@@ -1,6 +1,6 @@
 {
   "name": "@calypsohq/whatsapp-agent-mcp-server",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "private": true,
   "description": "WhatsApp Agent by Calypso: read your team's WhatsApp boards from Claude, ChatGPT and Cursor. Which chats are waiting, who owns each one, what the agent handled, which follow-ups are due.",
   "type": "module",

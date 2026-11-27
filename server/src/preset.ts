@@ -4,6 +4,7 @@ import { AgentActivityTool } from "./tools/AgentActivityTool.js";
 import { FindChatTool } from "./tools/FindChatTool.js";
 import { ListBoardsTool } from "./tools/ListBoardsTool.js";
 import { ListChatsTool } from "./tools/ListChatsTool.js";
+import { ListConversationsTool } from "./tools/ListConversationsTool.js";
 import { ListFollowUpsTool } from "./tools/ListFollowUpsTool.js";
 import { OpenChatTool } from "./tools/OpenChatTool.js";
 import { OverviewTool } from "./tools/OverviewTool.js";
@@ -16,10 +17,11 @@ export const INSTRUCTIONS = [
   "It never messages your customers, and it never moves, assigns or closes a chat: it only reads. When the user asks to reply, move or assign, say this connection cannot and that they do it on the boards at https://whatsapp.calypso.so.",
   "Start with whatsapp-overview. Open a chat only when the user asks about one, and read its messages only when the question needs what was actually said.",
   "Quote waiting times, counts and owners exactly as returned; do not estimate them.",
+  'For what a teammate did over a day or a week, use whatsapp-agent-activity (its by_member rows) and whatsapp-list-conversations, which include closed conversations; whatsapp-list-chats only shows what is open now. Per-teammate figures are by the conversation\'s current owner, and replies are counted per conversation, so say "in the conversations she owns", never "she sent".',
 ].join(" ");
 
 /**
- * WhatsApp Agent by Calypso: one endpoint, one scope, eight tools that read.
+ * WhatsApp Agent by Calypso: one endpoint, one scope, nine tools that read.
  *
  * The path names the product, as Elephant's does, because Calypso's
  * authorization server tells products apart by the path of the resource.
@@ -43,5 +45,6 @@ export const WHATSAPP_AGENT = new ToolPreset<WhatsAppTool>({
     new ReadMessagesTool(),
     new ListFollowUpsTool(),
     new AgentActivityTool(),
+    new ListConversationsTool(),
   ],
 });

@@ -16,6 +16,16 @@ export type ChatFilters = {
   readonly cursor?: string;
 };
 
+export type ConversationFilters = {
+  readonly since?: string;
+  readonly until?: string;
+  readonly status?: string;
+  readonly owner?: string;
+  readonly handled_by?: string;
+  readonly limit?: number;
+  readonly cursor?: string;
+};
+
 /**
  * The Calypso API's read-only WhatsApp routes (`/v1/whatsapp/*`), as one
  * caller.
@@ -67,6 +77,11 @@ export class WhatsAppReads {
     readonly board?: string;
   }): Promise<unknown> {
     return this.get("/whatsapp/follow-ups", filters);
+  }
+
+  /** A period's conversations, open and closed. */
+  conversations(filters: ConversationFilters): Promise<unknown> {
+    return this.get("/whatsapp/conversations", filters);
   }
 
   /** Team-wide: the API offers no board filter for activity. */

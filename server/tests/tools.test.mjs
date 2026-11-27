@@ -58,7 +58,7 @@ async function connect(scopes) {
 
 const json = (result) => JSON.parse(result.content[0].text);
 
-test("it offers eight tools, and every one only reads", async () => {
+test("it offers nine tools, and every one only reads", async () => {
   const client = await connect();
   const { tools } = await client.listTools();
   assert.deepEqual(
@@ -72,6 +72,7 @@ test("it offers eight tools, and every one only reads", async () => {
       "whatsapp-read-messages",
       "whatsapp-list-follow-ups",
       "whatsapp-agent-activity",
+      "whatsapp-list-conversations",
     ],
   );
   for (const tool of tools) {
@@ -123,6 +124,24 @@ test("each tool asks the one route that answers it, as the caller", async () => 
       { query: "marta" },
       "/whatsapp/chats/search",
       { query: "marta" },
+    ],
+    [
+      "whatsapp-list-conversations",
+      {
+        since: "2026-11-27T00:00:00-03:00",
+        status: "closed",
+        owner: "Camilo",
+        handledBy: "team",
+        limit: 10,
+      },
+      "/whatsapp/conversations",
+      {
+        since: "2026-11-27T00:00:00-03:00",
+        status: "closed",
+        owner: "Camilo",
+        handled_by: "team",
+        limit: "10",
+      },
     ],
     [
       "whatsapp-open-chat",

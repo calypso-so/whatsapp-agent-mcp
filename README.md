@@ -32,6 +32,8 @@ Needs a [Calypso WhatsApp](https://www.calypso.so/whatsapp) workspace.
 | "Can we still reply to her for free?" | WhatsApp's 24-hour reply window for that chat |
 | "Which follow-ups go out today?" | the Calypso Agent's planned follow-ups, by due time |
 | "How much did the agent handle this week?" | conversations handled by the agent, by the team, by nobody |
+| "Who handled the most chats today?" | the day's conversations by teammate, closed ones included |
+| "What did Camilo close this afternoon?" | his closed conversations, each one openable |
 
 ## Connect
 
@@ -48,7 +50,7 @@ Disconnect any time from **API Keys** in Calypso. The connection ends with the k
 
 ## Tools
 
-One scope, `whatsapp:read`, and eight tools. Every one is marked read-only.
+One scope, `whatsapp:read`, and nine tools. Every one is marked read-only.
 
 | Tool | What it returns |
 |---|---|
@@ -59,7 +61,8 @@ One scope, `whatsapp:read`, and eight tools. Every one is marked read-only.
 | `whatsapp-open-chat` | One chat: its card, last messages, open follow-ups and reply window |
 | `whatsapp-read-messages` | A chat's messages, newest first, a page at a time |
 | `whatsapp-list-follow-ups` | Planned follow-ups, by state, due time and board |
-| `whatsapp-agent-activity` | How many of the team's conversations the agent, the team, or nobody handled over a period |
+| `whatsapp-agent-activity` | How many of the team's conversations the agent, the team, or nobody handled over a period, and the same by teammate |
+| `whatsapp-list-conversations` | A period's conversations, open and closed, by teammate, status and who answered |
 
 Two prompts ship with it: `whatsapp-morning-brief` and `whatsapp-get-started`.
 
@@ -67,7 +70,7 @@ Two prompts ship with it: `whatsapp-morning-brief` and `whatsapp-get-started`.
 
 - It does not send, reply, move, assign or close. There is no tool for any of them.
 - It does not return media. An attachment is named by its kind (`image`, `audio`, `video`, `document`).
-- It does not search closed chats, beyond looking a full phone number up directly.
+- It does not search closed chats by name. Closed conversations are listed by period and teammate, and a full phone number is looked up directly.
 - It lists what the board shows: the newest 500 waiting and 500 taken chats.
 
 ## How it works
@@ -91,7 +94,7 @@ server verifies the token, unseals the key ──▶ api.calypso.so/v1/whatsapp/
 
 Authentication, the stateless endpoint, the rate limiter and the tool base classes come from
 [`@calypsohq/elephant-mcp-server/kit`](https://github.com/calypso-so/elephant-mcp/tree/main/server#kit),
-the kit Calypso's MCP servers share. This repo adds the eight tools and their wording.
+the kit Calypso's MCP servers share. This repo adds the nine tools and their wording.
 
 ## Build
 
