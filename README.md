@@ -1,10 +1,17 @@
+<div align="center">
+
+<img src="assets/logo.png" alt="WhatsApp Agent by Calypso: an owl in a hoodie holding a phone" width="200">
+
 # WhatsApp Agent by Calypso
 
 **An MCP server that lets Claude, ChatGPT and Cursor read your team's WhatsApp boards.**
+
+*The owl watches every board. It never messages your customers. It only reads.*
+
+</div>
+
 Ask which chats are waiting, who owns each one, what the Calypso Agent handled, and which
 follow-ups are due.
-
-*It never messages your customers. It only reads.*
 
 ```text
 https://whatsapp-mcp.calypso.so/whatsapp/mcp
