@@ -23,3 +23,7 @@ services:
       # Unset, sign-in is off and only Calypso project keys are accepted.
       - key: WHATSAPP_TOKEN_ENC_KEY
         sync: false
+      # OpenAI plugin portal domain verification. Public: the server serves it
+      # at /.well-known/openai-apps-challenge. Set in the dashboard.
+      - key: WHATSAPP_OPENAI_CHALLENGE_TOKEN
+        sync: false

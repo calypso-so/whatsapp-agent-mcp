@@ -18,6 +18,9 @@ const INITIALIZE = {
   },
 };
 
+const CHALLENGE_PATH = "/.well-known/openai-apps-challenge";
+const CHALLENGE_TOKEN = "test-challenge-token";
+
 let node;
 let base;
 const logged = [];
@@ -25,7 +28,10 @@ let realLog;
 
 before(async () => {
   const config = HttpConfig.fromEnv(
-    { WHATSAPP_TOKEN_ENC_KEY: randomBytes(32).toString("base64") },
+    {
+      WHATSAPP_TOKEN_ENC_KEY: randomBytes(32).toString("base64"),
+      WHATSAPP_OPENAI_CHALLENGE_TOKEN: CHALLENGE_TOKEN,
+    },
     PRODUCT,
   );
   realLog = console.log;
@@ -71,6 +77,28 @@ test("the config reads this product's env names and its own address", () => {
 test("it answers the health check", async () => {
   const response = await fetch(`${base}/healthz`);
   assert.equal(response.status, 200);
+});
+
+test("it proves the domain to the OpenAI portal with the token alone", async () => {
+  const response = await fetch(`${base}${CHALLENGE_PATH}`);
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("content-type"), /^text\/plain/);
+  assert.equal(await response.text(), CHALLENGE_TOKEN);
+});
+
+test("with no token set there is nothing at the challenge address", async () => {
+  const bare = composeWhatsAppServer(HttpConfig.fromEnv({}, PRODUCT), {
+    name: "whatsapp-agent-test",
+    version: "0.0.0-test",
+  }).createNodeServer();
+  await new Promise((resolve) => bare.listen(0, "127.0.0.1", resolve));
+  try {
+    const address = `http://127.0.0.1:${bare.address().port}`;
+    const response = await fetch(`${address}${CHALLENGE_PATH}`);
+    assert.equal(response.status, 404);
+  } finally {
+    await new Promise((resolve) => bare.close(resolve));
+  }
 });
 
 test("a call with no credentials is told where to sign in", async () => {

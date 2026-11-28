@@ -61,6 +61,8 @@ export function composeWhatsAppServer(
     metadata,
     maxBodyBytes: config.maxBodyBytes,
     version: packageInfo.version,
+    // Served as plain text at /.well-known/openai-apps-challenge when set.
+    openaiChallengeToken: config.openaiChallengeToken,
     log: (line) => console.log(JSON.stringify(line)),
   });
 }

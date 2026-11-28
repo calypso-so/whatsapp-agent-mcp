@@ -122,6 +122,7 @@ check `/healthz`, manual deploys.
 | `CALYPSO_OAUTH_ISSUER` | `https://login.calypso.so` | Authorization server |
 | `CALYPSO_API_BASE_URL` | `https://api.calypso.so/v1` | Calypso API |
 | `WHATSAPP_TOKEN_ENC_KEY` | none | 32-byte base64 key shared with the authorization server. Unset: sign-in off, API keys only |
+| `WHATSAPP_OPENAI_CHALLENGE_TOKEN` | none | OpenAI plugin portal domain-verification token (public), served as plain text at `/.well-known/openai-apps-challenge`. Unset: 404 |
 | `WHATSAPP_JWKS_URL` | `<issuer>/.well-known/jwks.json` | Token signing keys |
 | `WHATSAPP_REQUESTS_PER_MINUTE` | `120` | Per-caller request budget |
 | `PORT` | `8080` | Listen port |
