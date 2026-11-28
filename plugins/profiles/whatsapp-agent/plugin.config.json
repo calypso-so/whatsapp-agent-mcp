@@ -144,7 +144,7 @@
         "description": "See how the WhatsApp inbox stands right now",
         "prompt": "How is our WhatsApp inbox doing right now?",
         "expected_tool": "whatsapp-overview",
-        "expected_behavior": "Calls whatsapp-overview and reports, for each board, the open chats, how many are waiting on the team and how many are unread, plus the longest wait in minutes, using the numbers exactly as returned."
+        "expected_behavior": "Calls whatsapp-overview and reports, for each board, the open chats, how many are waiting on the team and how many are unread, plus the longest wait in minutes, using the numbers exactly as returned. On the review workspace that is two boards, Support (4 open chats, 3 waiting on the team, 3 unread) and Sales (4 open, 2 waiting, 2 unread), plus 2 chats in the Inbox, one connected personal line, and a longest wait that is Hannah Brooks's."
       },
       {
         "id": "waiting-customers",
@@ -152,7 +152,7 @@
         "description": "List the customers waiting for a reply",
         "prompt": "Which customers are waiting for a reply on WhatsApp, and for how long?",
         "expected_tool": "whatsapp-list-chats",
-        "expected_behavior": "Calls whatsapp-list-chats for the chats where the customer wrote last and lists each one with its contact, board, owner and minutes waiting, longest wait first."
+        "expected_behavior": "Calls whatsapp-list-chats for the chats where the customer wrote last and lists each one with its contact, board, owner and minutes waiting, longest wait first. On the review workspace that is seven customers, longest wait first: Hannah Brooks, Sofia Marin, Grace Liu, Aisha Rahman, Omar Haddad, Tom Becker and Kenji Sato."
       },
       {
         "id": "summarise-longest-wait",
@@ -160,7 +160,7 @@
         "description": "Summarise one WhatsApp conversation",
         "prompt": "Summarise the WhatsApp chat that has been waiting the longest.",
         "expected_tool": "whatsapp-read-messages",
-        "expected_behavior": "Finds the chat that has waited longest with whatsapp-list-chats, then calls whatsapp-read-messages on it and summarises what the customer asked and what was answered, naming the contact and when the last message arrived."
+        "expected_behavior": "Finds the chat that has waited longest with whatsapp-list-chats, then calls whatsapp-read-messages on it and summarises what the customer asked and what was answered, naming the contact and when the last message arrived. On the review workspace that is Hannah Brooks: her Wren floor lamp (order LH-20418) arrived with a cracked glass shade, a teammate offered a full replacement, and she is still waiting to hear whether it arrives before Friday."
       },
       {
         "id": "team-activity",
@@ -168,7 +168,7 @@
         "description": "Compare the workload of each teammate",
         "prompt": "Who on my team handled the most WhatsApp conversations in the last 7 days?",
         "expected_tool": "whatsapp-agent-activity",
-        "expected_behavior": "Calls whatsapp-agent-activity and ranks the teammates by the conversations each one owns, with how many of those are closed, and says how many the AI agent handled. States that a conversation counts for its current owner."
+        "expected_behavior": "Calls whatsapp-agent-activity and ranks the teammates by the conversations each one owns, with how many of those are closed, and says how many the AI agent handled. States that a conversation counts for its current owner. On the review workspace that is Maya Okafor with 7 conversations (5 closed), then Luis Ortega with 4, Priya Nair with 3 and Dana Whitfield with 2, out of 24 conversations, 5 of which the AI agent handled."
       },
       {
         "id": "closed-conversations",
@@ -176,7 +176,7 @@
         "description": "List the conversations that were closed",
         "prompt": "List the WhatsApp conversations we closed in the last 7 days and who owned each one.",
         "expected_tool": "whatsapp-list-conversations",
-        "expected_behavior": "Calls whatsapp-list-conversations for closed conversations in the period and lists each one with its contact, owner, when it closed and who answered last."
+        "expected_behavior": "Calls whatsapp-list-conversations for closed conversations in the period and lists each one with its contact, owner, when it closed and who answered last. On the review workspace that is 14 conversations: Maya Okafor owns 5, Luis Ortega 3, Priya Nair 2, Dana Whitfield 1, and 3 have no owner because the AI agent answered them."
       },
       {
         "id": "send-message",

@@ -46,7 +46,9 @@ What sets it apart from the rest of the page is said first everywhere: it never 
 
 ## Before submitting
 
+- **Review workspace.** It exists: "Larkspur Home (WhatsApp demo)", a made-up shop with two boards (Support and Sales), four people, ten open chats and fourteen conversations closed in the last few days, on a connected personal line. Every contact uses a `+1 415 555 01xx` number, a range reserved for fiction. The five positive cases say what each prompt returns there.
+- **Keep it fresh.** The chats are stored relative to the moment they were seeded, so the "last 7 days" answers thin out after about two days. Refresh the workspace right before recording the demo and submitting, and once a day while the listing is in review.
+- **Review sign-in.** The account's email and password go in the submission form only. They are not in this repository or in the package.
+- **Checked.** All eight cases were run against the review workspace through the live server: each positive prompt called its expected tool and returned the figures in its case, and no negative prompt called a tool. Run them once more in ChatGPT itself before submitting.
 - `review.demo_recording_url` is empty; the build warns until it is set.
-- The review workspace needs a connected line, at least one chat where the customer wrote last, and conversations closed in the last seven days by more than one teammate. The five positive cases read exactly that.
-- The three negative cases expect no tool call. The server's instructions say so from the version that ships with this folder, so deploy the server first.
-- Set `listing.releaseState` to `ready-for-review` when the above is done.
+- Set `listing.releaseState` to `ready-for-review` when the recording is in.
